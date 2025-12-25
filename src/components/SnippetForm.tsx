@@ -2,7 +2,7 @@ import { writeTextFile } from '@tauri-apps/plugin-fs'
 import { desktopDir } from '@tauri-apps/api/path'
 import { useState } from 'react'
 
-function SnippetEditor(){
+function SnippetForm(){
 	const [snippetName, setSnippetName] = useState('')
 
 	return (
@@ -27,4 +27,4 @@ function SnippetEditor(){
 	)
 }
 
-export default SnippetEditor;
+export default SnippetForm;
