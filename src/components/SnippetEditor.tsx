@@ -1,8 +1,18 @@
+import { useSnippetStore } from "../store/snippetsStore";
+
 function SnippetEditor(){
+	const selectedSnippet = useSnippetStore(state => state.selectedSnippet)
+
 	return (
-		<div>
-			Hello, World!
-		</div>
+		<>
+			{
+				selectedSnippet ? (
+					<></>
+				) : (
+					<h1>No Snippet Selected</h1>
+				)
+			}
+		</>
 	)
 }
 
