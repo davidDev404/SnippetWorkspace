@@ -1,9 +1,11 @@
 import { writeTextFile } from '@tauri-apps/plugin-fs'
 import { desktopDir } from '@tauri-apps/api/path'
 import { useState } from 'react'
+import { useSnippetStore } from '../store/snippetsStore'
 
 function SnippetForm(){
 	const [snippetName, setSnippetName] = useState('')
+	const addSnippetName = useSnippetStore(state => state.addSnippetName)
 
 	return (
 		<form onSubmit={async (e) => {
@@ -13,6 +15,7 @@ function SnippetForm(){
 			//console.log(desktopPath)
 			await writeTextFile(`${desktopPath}/taurifiles/${snippetName}.md`, "")
 			setSnippetName('')
+			addSnippetName(snippetName)
 		}}>
 			<input type="text"
 				placeholder="Write a snippet" 
