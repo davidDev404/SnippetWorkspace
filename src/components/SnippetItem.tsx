@@ -2,6 +2,7 @@ import { readTextFile, remove } from "@tauri-apps/plugin-fs";
 import { useSnippetStore } from "../store/snippetsStore";
 import { twMerge } from "tailwind-merge";
 import { desktopDir, join } from "@tauri-apps/api/path";
+import toast from "react-hot-toast";
 interface Props {
 	snippetName: string;
 }
@@ -20,6 +21,17 @@ function SnippetItem({snippetName}: Props){
 		const filePath = await join(desktopPath, 'taurifiles', `${snippetName}.md`)
 		await remove(filePath)
 		removeSnippetName(snippetName)
+
+		toast('Snippet deleted!', {
+			icon: '🗑️',
+			duration: 2000,
+			position: 'bottom-right',
+			style: {
+				borderRadius: '10px',
+				background: "#202020",
+				color: "#fff"
+			}
+		})
 	}
 
 	return (

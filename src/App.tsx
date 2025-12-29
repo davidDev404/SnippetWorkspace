@@ -1,6 +1,7 @@
 import SnippetForm from './components/SnippetForm';
 import SnippetList from './components/SnippetList';
 import SnippetEditor from './components/SnippetEditor';
+import { Toaster } from 'react-hot-toast';
 
 function App(){
 	return (
@@ -12,6 +13,7 @@ function App(){
 			<div className="col-span-9 flex justify-center items-center">
 				<SnippetEditor />
 			</div>
+			<Toaster />
 		</div>
 	)
 }
