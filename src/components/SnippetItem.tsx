@@ -60,6 +60,13 @@ function SnippetItem({snippetName}: Props){
 				>
 					Delete
 				</button>
+				<button
+					onClick={(e) => {
+						e.stopPropagation()
+						setSelectedSnippet(null)
+					}}>
+					Cancel
+				</button>
 			</div>
 		</div>
 	)
