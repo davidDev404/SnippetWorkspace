@@ -3,6 +3,7 @@ import { useSnippetStore } from "../store/snippetsStore";
 import { twMerge } from "tailwind-merge";
 import { desktopDir, join } from "@tauri-apps/api/path";
 import toast from "react-hot-toast";
+import { FiTrash, FiX } from "react-icons/fi";
 interface Props {
 	snippetName: string;
 }
@@ -51,23 +52,24 @@ function SnippetItem({snippetName}: Props){
 			<h1>
 				{snippetName}
 			</h1>
-			<div className="flex gap-2">
-				<button
-					onClick={(e) => {
-						e.stopPropagation()
-						handleDelete(snippetName)
-					}}
-				>
-					Delete
-				</button>
-				<button
-					onClick={(e) => {
-						e.stopPropagation()
-						setSelectedSnippet(null)
-					}}>
-					Cancel
-				</button>
-			</div>
+			{selectedSnippet?.name === snippetName && (
+				<div className="flex gap-2 items-center justify-center">
+					<FiTrash
+						onClick={(e) => {
+							e.stopPropagation()
+							handleDelete(snippetName)
+						}}
+						className="text-neutral-500"
+					/>
+					<FiX
+						onClick={(e) => {
+							e.stopPropagation()
+							setSelectedSnippet(null)
+						}}
+						className="text-neutral-500"
+					/>
+				</div>
+			)}
 		</div>
 	)
 }
